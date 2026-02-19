@@ -1,0 +1,2870 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sociedade de Cantores Niegedacht</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #003366 0%, #000000 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Cores da Imigração Alemã */
+        :root {
+            --preto-alemao: #000000;
+            --vermelho-alemao: #DD0000;
+            --dourado-alemao: #FFCE00;
+            --azul-baviera: #005CAB;
+            --branco-baviera: #FFFFFF;
+            --azul-claro: #4A90E2;
+            --azul-escuro: #003366;
+            --cinza-alemao: #4A4A4A;
+            --bege-tradicional: #F5E6D3;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--preto-alemao) 100%);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--dourado-alemao);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--dourado-alemao);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            padding-left: 60px;
+        }
+
+        .logo::before {
+            content: '🦅';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2.5rem;
+            color: var(--dourado-alemao);
+            filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.5));
+        }
+
+        .logo span {
+            font-size: 1rem;
+            display: block;
+            color: var(--branco-baviera);
+            font-weight: normal;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--branco-baviera);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            letter-spacing: 0.5px;
+        }
+
+        nav a:hover {
+            color: var(--dourado-alemao);
+            background: rgba(255,255,255,0.1);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--dourado-alemao), var(--vermelho-alemao));
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        nav a:hover::after {
+            width: 80%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--preto-alemao) 100%);
+            color: var(--branco-baviera);
+            text-align: center;
+            padding: 150px 20px 100px;
+            margin-top: 70px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid var(--dourado-alemao);
+        }
+
+        .hero::before {
+            content: '⚜️';
+            position: absolute;
+            font-size: 300px;
+            opacity: 0.05;
+            top: -50px;
+            right: -50px;
+            transform: rotate(20deg);
+            color: var(--dourado-alemao);
+            animation: floatNote 20s infinite linear;
+        }
+
+        .hero::after {
+            content: '🦅';
+            position: absolute;
+            font-size: 250px;
+            opacity: 0.05;
+            bottom: -50px;
+            left: -50px;
+            transform: rotate(-15deg);
+            color: var(--vermelho-alemao);
+            animation: floatNote 15s infinite linear reverse;
+        }
+
+        @keyframes floatNote {
+            0% { transform: rotate(20deg) translate(0, 0); }
+            50% { transform: rotate(25deg) translate(20px, 20px); }
+            100% { transform: rotate(20deg) translate(0, 0); }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(135deg, var(--dourado-alemao), var(--vermelho-alemao));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+            color: var(--branco-baviera);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            animation: fadeInUp 1s ease 0.4s both;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: var(--dourado-alemao);
+            color: var(--preto-alemao);
+            box-shadow: 0 4px 15px rgba(255,206,0,0.3);
+            border: 2px solid var(--vermelho-alemao);
+        }
+
+        .btn-primary:hover {
+            background: var(--vermelho-alemao);
+            color: var(--dourado-alemao);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(221,0,0,0.3);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--dourado-alemao);
+            color: var(--branco-baviera);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--dourado-alemao);
+            color: var(--preto-alemao);
+            transform: translateY(-3px);
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--bege-tradicional) 0%, #ffffff 100%);
+            position: relative;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--preto-alemao), var(--vermelho-alemao), var(--dourado-alemao));
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 3rem;
+            color: var(--azul-escuro);
+            position: relative;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,92,171,0.2);
+        }
+
+        .section-title::before {
+            content: '⚜️';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: -30px;
+            font-size: 2rem;
+            color: var(--dourado-alemao);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--preto-alemao), var(--vermelho-alemao), var(--dourado-alemao));
+            border-radius: 2px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--branco-baviera) 0%, #f0f0f0 100%);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,92,171,0.2);
+            transition: transform 0.3s ease;
+            border-left: 6px solid var(--azul-baviera);
+            border-right: 2px solid var(--dourado-alemao);
+        }
+
+        .about-text:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(221,0,0,0.2);
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--azul-escuro);
+            border-bottom: 3px solid var(--dourado-alemao);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            color: var(--cinza-alemao);
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul-baviera) 100%);
+            border-radius: 15px;
+            color: var(--branco-baviera);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,51,102,0.3);
+            border: 2px solid var(--dourado-alemao);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-item::before {
+            content: '⚜️';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 3rem;
+            opacity: 0.1;
+            transform: rotate(15deg);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(221,0,0,0.3);
+            border-color: var(--vermelho-alemao);
+        }
+
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--dourado-alemao);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            color: var(--branco-baviera);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Sponsors Carousel Section */
+        .sponsors {
+            padding: 60px 0;
+            background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--preto-alemao) 100%);
+            position: relative;
+            overflow: hidden;
+            border-top: 3px solid var(--dourado-alemao);
+            border-bottom: 3px solid var(--vermelho-alemao);
+        }
+
+        .sponsors::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 20px,
+                rgba(255,206,0,0.03) 20px,
+                rgba(255,206,0,0.03) 40px
+            );
+            pointer-events: none;
+        }
+
+        .sponsors-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .sponsors-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .sponsors-header h2 {
+            font-size: 2.5rem;
+            color: var(--dourado-alemao);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .sponsors-header h2::before {
+            content: '⭐';
+            position: absolute;
+            left: -50px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: var(--dourado-alemao);
+            animation: starPulse 2s infinite;
+        }
+
+        .sponsors-header h2::after {
+            content: '⭐';
+            position: absolute;
+            right: -50px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: var(--vermelho-alemao);
+            animation: starPulse 2s infinite 1s;
+        }
+
+        @keyframes starPulse {
+            0%, 100% { transform: translateY(-50%) scale(1); opacity: 1; }
+            50% { transform: translateY(-50%) scale(1.2); opacity: 0.8; }
+        }
+
+        .sponsors-header p {
+            color: var(--branco-baviera);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 50px;
+            border: 1px solid var(--dourado-alemao);
+            backdrop-filter: blur(5px);
+        }
+
+        /* Flash Carousel */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding: 20px 0;
+        }
+
+        .carousel-track {
+            display: flex;
+            animation: scroll 40s linear infinite;
+            width: fit-content;
+        }
+
+        .carousel-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .sponsor-item {
+            flex: 0 0 auto;
+            width: 220px;
+            margin: 0 30px;
+            background: linear-gradient(135deg, var(--branco-baviera) 0%, #f0f0f0 100%);
+            border-radius: 15px;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 2px solid var(--dourado-alemao);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .sponsor-item::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, var(--dourado-alemao), var(--vermelho-alemao), var(--azul-baviera));
+            border-radius: 15px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .sponsor-item:hover {
+            transform: translateY(-10px) scale(1.05);
+            border-color: transparent;
+        }
+
+        .sponsor-item:hover::before {
+            opacity: 1;
+        }
+
+        .sponsor-logo {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 15px;
+            background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul-baviera) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--dourado-alemao);
+            border: 3px solid var(--dourado-alemao);
+            transition: all 0.3s ease;
+        }
+
+        .sponsor-item:hover .sponsor-logo {
+            transform: rotate(360deg);
+            border-color: var(--vermelho-alemao);
+            color: var(--vermelho-alemao);
+        }
+
+        .sponsor-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--azul-escuro);
+            margin-bottom: 5px;
+        }
+
+        .sponsor-category {
+            font-size: 0.9rem;
+            color: var(--cinza-alemao);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .sponsor-years {
+            font-size: 0.85rem;
+            color: var(--vermelho-alemao);
+            font-weight: 600;
+            background: rgba(221,0,0,0.1);
+            padding: 3px 10px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .sponsor-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--dourado-alemao);
+            color: var(--preto-alemao);
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .sponsor-badge.premium {
+            background: linear-gradient(135deg, var(--dourado-alemao) 0%, var(--vermelho-alemao) 100%);
+            color: var(--branco-baviera);
+        }
+
+        /* Control buttons */
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 30px;
+        }
+
+        .carousel-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--azul-escuro);
+            border: 2px solid var(--dourado-alemao);
+            color: var(--dourado-alemao);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-btn:hover {
+            background: var(--dourado-alemao);
+            color: var(--azul-escuro);
+            transform: scale(1.1);
+        }
+
+        .carousel-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .carousel-btn i {
+            pointer-events: none;
+        }
+
+        /* Speed control */
+        .speed-control {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 20px;
+            color: var(--branco-baviera);
+        }
+
+        .speed-control label {
+            font-size: 0.9rem;
+            color: var(--dourado-alemao);
+        }
+
+        .speed-control select {
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: 2px solid var(--dourado-alemao);
+            background: var(--azul-escuro);
+            color: var(--branco-baviera);
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .speed-control select:hover {
+            background: var(--azul-baviera);
+        }
+
+        .sponsor-counter {
+            text-align: center;
+            margin-top: 20px;
+            color: var(--branco-baviera);
+            font-size: 1rem;
+        }
+
+        .sponsor-counter span {
+            color: var(--dourado-alemao);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Financial Transparency Section */
+        .financial {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--branco-baviera) 0%, var(--bege-tradicional) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .financial::before {
+            content: '💰';
+            position: absolute;
+            font-size: 200px;
+            opacity: 0.03;
+            top: -50px;
+            right: -50px;
+            transform: rotate(15deg);
+            color: var(--azul-baviera);
+        }
+
+        .financial::after {
+            content: '⚜️';
+            position: absolute;
+            font-size: 150px;
+            opacity: 0.02;
+            bottom: -30px;
+            left: -30px;
+            transform: rotate(-10deg);
+            color: var(--dourado-alemao);
+        }
+
+        .financial-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .financial-header h2 {
+            font-size: 2.8rem;
+            color: var(--azul-escuro);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .financial-header h2::before {
+            content: '⚜️';
+            position: absolute;
+            left: -40px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: var(--dourado-alemao);
+        }
+
+        .financial-header h2::after {
+            content: '⚜️';
+            position: absolute;
+            right: -40px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: var(--vermelho-alemao);
+        }
+
+        .financial-header p {
+            color: var(--cinza-alemao);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(0,92,171,0.1);
+            padding: 1rem;
+            border-radius: 50px;
+            border: 1px solid var(--dourado-alemao);
+        }
+
+        .financial-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .financial-card {
+            background: linear-gradient(135deg, var(--branco-baviera) 0%, #f8f8f8 100%);
+            padding: 2rem 1.5rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--azul-baviera);
+            border-bottom: 4px solid var(--dourado-alemao);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .financial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(221,0,0,0.15);
+            border-left-color: var(--vermelho-alemao);
+        }
+
+        .financial-card i {
+            font-size: 2.5rem;
+            color: var(--azul-escuro);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(255,206,0,0.3);
+        }
+
+        .financial-card h3 {
+            font-size: 1.1rem;
+            color: var(--cinza-alemao);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .financial-card .value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--azul-escuro);
+            margin-bottom: 0.5rem;
+            font-family: 'Courier New', monospace;
+        }
+
+        .financial-card .trend {
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.3rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            background: rgba(0,0,0,0.05);
+        }
+
+        .trend.up {
+            color: #2E7D32;
+        }
+
+        .trend.down {
+            color: #C62828;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .dashboard-card {
+            background: linear-gradient(135deg, var(--branco-baviera) 0%, #ffffff 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,92,171,0.15);
+            border: 1px solid var(--dourado-alemao);
+            position: relative;
+        }
+
+        .dashboard-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--preto-alemao), var(--vermelho-alemao), var(--dourado-alemao));
+            border-radius: 20px 20px 0 0;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-header h3 {
+            font-size: 1.4rem;
+            color: var(--azul-escuro);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-header h3 i {
+            color: var(--dourado-alemao);
+        }
+
+        .card-header select {
+            padding: 0.6rem 1rem;
+            border: 2px solid var(--azul-baviera);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: var(--azul-escuro);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--branco-baviera);
+            font-weight: 600;
+        }
+
+        .card-header select:hover {
+            border-color: var(--dourado-alemao);
+            background: #f8f8f8;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 250px;
+            margin-bottom: 1rem;
+        }
+
+        .chart-bar {
+            display: flex;
+            align-items: flex-end;
+            height: 200px;
+            gap: 1rem;
+            padding: 1rem 0;
+        }
+
+        .bar-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .bar {
+            width: 100%;
+            background: linear-gradient(180deg, var(--azul-baviera) 0%, var(--azul-escuro) 100%);
+            border-radius: 8px 8px 0 0;
+            transition: height 0.3s ease;
+            position: relative;
+            cursor: pointer;
+            border: 1px solid var(--dourado-alemao);
+        }
+
+        .bar:hover {
+            opacity: 0.9;
+            transform: scaleX(1.05);
+            background: linear-gradient(180deg, var(--vermelho-alemao) 0%, var(--azul-escuro) 100%);
+        }
+
+        .bar:hover::after {
+            content: attr(data-value);
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--azul-escuro);
+            color: var(--dourado-alemao);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            border: 1px solid var(--dourado-alemao);
+        }
+
+        .bar-label {
+            font-size: 0.9rem;
+            color: var(--cinza-alemao);
+            font-weight: 500;
+        }
+
+        .bar-value {
+            font-size: 0.8rem;
+            color: var(--azul-escuro);
+            font-weight: 600;
+        }
+
+        .pie-chart {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            height: 200px;
+        }
+
+        .pie {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: conic-gradient(
+                var(--azul-escuro) 0% 40%,
+                var(--vermelho-alemao) 40% 65%,
+                var(--dourado-alemao) 65% 85%,
+                var(--preto-alemao) 85% 100%
+            );
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+            border: 3px solid var(--branco-baviera);
+        }
+
+        .pie:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        .pie-legend {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            color: var(--cinza-alemao);
+            font-weight: 500;
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .legend-color.eventos { background: var(--azul-escuro); }
+        .legend-color.manutencao { background: var(--vermelho-alemao); }
+        .legend-color.equipamentos { background: var(--dourado-alemao); }
+        .legend-color.administrativo { background: var(--preto-alemao); }
+
+        .transactions-table {
+            grid-column: span 2;
+            background: linear-gradient(135deg, var(--branco-baviera) 0%, #ffffff 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,92,171,0.15);
+            border: 1px solid var(--dourado-alemao);
+        }
+
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .table-header h3 {
+            font-size: 1.4rem;
+            color: var(--azul-escuro);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .table-header h3 i {
+            color: var(--dourado-alemao);
+        }
+
+        .table-header input {
+            padding: 0.8rem 1.5rem;
+            border: 2px solid var(--azul-baviera);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            width: 280px;
+            background: var(--branco-baviera);
+            transition: all 0.3s ease;
+        }
+
+        .table-header input:focus {
+            outline: none;
+            border-color: var(--dourado-alemao);
+            box-shadow: 0 0 0 3px rgba(255,206,0,0.2);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: left;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul-baviera) 100%);
+            color: var(--branco-baviera);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        th:first-child {
+            border-radius: 10px 0 0 0;
+        }
+
+        th:last-child {
+            border-radius: 0 10px 0 0;
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid #e0e0e0;
+            color: var(--cinza-alemao);
+        }
+
+        tr:hover td {
+            background: rgba(0,92,171,0.05);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 25px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-badge.pago {
+            background: var(--azul-escuro);
+            color: var(--dourado-alemao);
+            border: 1px solid var(--dourado-alemao);
+        }
+
+        .status-badge.pendente {
+            background: var(--vermelho-alemao);
+            color: var(--branco-baviera);
+        }
+
+        .status-badge.processando {
+            background: var(--dourado-alemao);
+            color: var(--preto-alemao);
+        }
+
+        .amount.positive {
+            color: var(--azul-escuro);
+            font-weight: 700;
+        }
+
+        .amount.negative {
+            color: var(--vermelho-alemao);
+            font-weight: 700;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul-baviera) 100%);
+            color: var(--branco-baviera);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            border: 1px solid var(--dourado-alemao);
+            margin-right: 0.5rem;
+        }
+
+        .download-btn:hover {
+            background: linear-gradient(135deg, var(--vermelho-alemao) 0%, var(--azul-escuro) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(221,0,0,0.3);
+            color: var(--dourado-alemao);
+        }
+
+        .download-btn i {
+            margin-right: 0.5rem;
+        }
+
+        .financial-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+            padding: 1.5rem 2rem;
+            background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul-baviera) 100%);
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            border: 2px solid var(--dourado-alemao);
+        }
+
+        .audit-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--branco-baviera);
+        }
+
+        .audit-info i {
+            color: var(--dourado-alemao);
+            font-size: 1.8rem;
+        }
+
+        .audit-info p {
+            font-size: 0.95rem;
+        }
+
+        .audit-info strong {
+            color: var(--dourado-alemao);
+            font-weight: 700;
+        }
+
+        /* Events Section */
+        .events {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--bege-tradicional) 0%, #ffffff 100%);
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .event-card {
+            background: linear-gradient(135deg, var(--branco-baviera) 0%, #f0f0f0 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,92,171,0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            border-left: 4px solid var(--azul-baviera);
+            border-bottom: 4px solid var(--dourado-alemao);
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(221,0,0,0.2);
+            border-left-color: var(--vermelho-alemao);
+        }
+
+        .event-date {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul-baviera) 100%);
+            color: var(--dourado-alemao);
+            padding: 1rem;
+            border-radius: 15px;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            border: 2px solid var(--dourado-alemao);
+        }
+
+        .event-date .day {
+            font-size: 1.8rem;
+            display: block;
+            line-height: 1;
+        }
+
+        .event-date .month {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .event-content {
+            padding: 2rem;
+        }
+
+        .event-content h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            color: var(--azul-escuro);
+        }
+
+        .event-content .location {
+            color: var(--vermelho-alemao);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .event-content .location i {
+            margin-right: 0.5rem;
+            color: var(--dourado-alemao);
+        }
+
+        .event-content p {
+            color: var(--cinza-alemao);
+            margin-bottom: 1.5rem;
+        }
+
+        .event-link {
+            color: var(--azul-escuro);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            background: rgba(0,92,171,0.1);
+            border-radius: 25px;
+        }
+
+        .event-link:hover {
+            gap: 1rem;
+            background: var(--dourado-alemao);
+            color: var(--preto-alemao);
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--branco-baviera) 0%, #ffffff 100%);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,92,171,0.2);
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(221,0,0,0.3);
+            border-color: var(--dourado-alemao);
+            z-index: 2;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, var(--azul-escuro), transparent);
+            color: var(--branco-baviera);
+            padding: 1.5rem;
+            transition: bottom 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            bottom: 0;
+        }
+
+        .gallery-overlay h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+            color: var(--dourado-alemao);
+        }
+
+        .gallery-overlay p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Music Section */
+        .music {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--preto-alemao) 100%);
+            color: var(--branco-baviera);
+            position: relative;
+            border-top: 4px solid var(--dourado-alemao);
+            border-bottom: 4px solid var(--vermelho-alemao);
+        }
+
+        .music-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .music h2 {
+            color: var(--dourado-alemao);
+        }
+
+        .music h2::before {
+            content: '♪';
+            color: var(--vermelho-alemao);
+        }
+
+        .music h2::after {
+            content: '♫';
+            color: var(--azul-baviera);
+        }
+
+        .music h2::after {
+            background: none;
+        }
+
+        .music-player {
+            margin: 3rem 0;
+        }
+
+        .audio-player {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 2px solid var(--dourado-alemao);
+        }
+
+        .audio-player audio {
+            flex: 1;
+            height: 40px;
+            border-radius: 20px;
+        }
+
+        .audio-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .audio-info i {
+            font-size: 2.5rem;
+            animation: pulse 2s infinite;
+            color: var(--dourado-alemao);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .playlist {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .playlist-item {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid var(--dourado-alemao);
+        }
+
+        .playlist-item:hover {
+            background: var(--dourado-alemao);
+            transform: translateX(5px);
+            color: var(--preto-alemao);
+        }
+
+        .playlist-item:hover i,
+        .playlist-item:hover h4,
+        .playlist-item:hover p {
+            color: var(--preto-alemao);
+        }
+
+        .playlist-item i {
+            font-size: 1.8rem;
+            color: var(--dourado-alemao);
+        }
+
+        .playlist-info {
+            flex: 1;
+            text-align: left;
+        }
+
+        .playlist-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+            color: var(--branco-baviera);
+        }
+
+        .playlist-info p {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            color: var(--dourado-alemao);
+        }
+
+        .playlist-item .duration {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            color: var(--branco-baviera);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--branco-baviera) 0%, var(--bege-tradicional) 100%);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--branco-baviera) 0%, #f8f8f8 100%);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,92,171,0.15);
+            border-left: 6px solid var(--azul-escuro);
+            border-bottom: 4px solid var(--dourado-alemao);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, var(--branco-baviera) 0%, #ffffff 100%);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--azul-baviera);
+        }
+
+        .contact-item:hover {
+            transform: translateX(5px);
+            border-color: var(--dourado-alemao);
+            box-shadow: 0 5px 15px rgba(221,0,0,0.1);
+        }
+
+        .contact-icon {
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul-baviera) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dourado-alemao);
+            font-size: 1.4rem;
+            border: 2px solid var(--dourado-alemao);
+        }
+
+        .contact-text h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+            color: var(--azul-escuro);
+        }
+
+        .contact-text p {
+            color: var(--cinza-alemao);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul-baviera) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dourado-alemao);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.3rem;
+            border: 2px solid var(--dourado-alemao);
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px) scale(1.1);
+            background: linear-gradient(135deg, var(--vermelho-alemao) 0%, var(--azul-escuro) 100%);
+            color: var(--branco-baviera);
+            box-shadow: 0 5px 15px rgba(221,0,0,0.3);
+        }
+
+        .contact-form {
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--branco-baviera) 0%, #f8f8f8 100%);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,92,171,0.15);
+            border-right: 6px solid var(--vermelho-alemao);
+            border-bottom: 4px solid var(--dourado-alemao);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--azul-escuro);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid var(--azul-baviera);
+            border-radius: 8px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background: var(--branco-baviera);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--dourado-alemao);
+            box-shadow: 0 0 0 3px rgba(255,206,0,0.2);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul-baviera) 100%);
+            color: var(--dourado-alemao);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            border: 2px solid var(--dourado-alemao);
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(135deg, var(--vermelho-alemao) 0%, var(--azul-escuro) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(221,0,0,0.3);
+            color: var(--branco-baviera);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--preto-alemao) 0%, var(--azul-escuro) 100%);
+            color: var(--branco-baviera);
+            padding: 4rem 0 1rem;
+            border-top: 4px solid var(--dourado-alemao);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+            color: var(--dourado-alemao);
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--vermelho-alemao), var(--dourado-alemao));
+            border-radius: 2px;
+        }
+
+        .footer-section p {
+            color: #ccc;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--dourado-alemao);
+            transform: translateX(5px);
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.1);
+            color: var(--branco-baviera);
+            border: 1px solid var(--azul-baviera);
+        }
+
+        .newsletter-form input::placeholder {
+            color: #999;
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+            border-color: var(--dourado-alemao);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .newsletter-form button {
+            background: linear-gradient(135deg, var(--dourado-alemao) 0%, var(--azul-baviera) 100%);
+            color: var(--preto-alemao);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .newsletter-form button:hover {
+            background: linear-gradient(135deg, var(--vermelho-alemao) 0%, var(--dourado-alemao) 100%);
+            transform: translateY(-2px);
+            color: var(--branco-baviera);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #999;
+        }
+
+        /* Bavarian pattern decoration */
+        .bavarian-pattern {
+            position: absolute;
+            width: 100%;
+            height: 10px;
+            background: repeating-linear-gradient(
+                45deg,
+                var(--azul-escuro) 0px,
+                var(--azul-escuro) 10px,
+                var(--branco-baviera) 10px,
+                var(--branco-baviera) 20px
+            );
+        }
+
+        /* Music note animations */
+        .music-notes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .note {
+            position: absolute;
+            font-size: 2rem;
+            color: rgba(255,206,0,0.05);
+            animation: floatNote 15s infinite linear;
+        }
+
+        @keyframes floatNote {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 1s ease;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .logo {
+                margin-bottom: 1rem;
+                padding-left: 50px;
+            }
+
+            .logo::before {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.8rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .financial-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .transactions-table {
+                overflow-x: auto;
+            }
+
+            .table-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .table-header input {
+                width: 100%;
+            }
+
+            .financial-footer {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .audit-info {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .pie-chart {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .pie {
+                width: 120px;
+                height: 120px;
+            }
+
+            .financial-header h2::before,
+            .financial-header h2::after {
+                display: none;
+            }
+
+            .sponsor-item {
+                width: 180px;
+                margin: 0 15px;
+            }
+
+            .sponsors-header h2::before,
+            .sponsors-header h2::after {
+                display: none;
+            }
+
+            .speed-control {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .events-grid,
+            .gallery-grid,
+            .playlist {
+                grid-template-columns: 1fr;
+            }
+
+            .audio-player {
+                flex-direction: column;
+            }
+
+            .audio-player audio {
+                width: 100%;
+            }
+
+            .financial-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .sponsor-item {
+                width: 150px;
+                margin: 0 10px;
+            }
+
+            .sponsor-logo {
+                width: 70px;
+                height: 70px;
+                font-size: 2rem;
+            }
+
+            .sponsor-name {
+                font-size: 1rem;
+            }
+        }
+    </style>
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Bavarian decorative pattern -->
+    <div class="bavarian-pattern" style="top: 0;"></div>
+    
+    <!-- Music notes animation -->
+    <div class="music-notes">
+        <div class="note" style="left: 10%; animation-delay: 0s;">♪</div>
+        <div class="note" style="left: 30%; animation-delay: 2s;">♫</div>
+        <div class="note" style="left: 50%; animation-delay: 4s;">♩</div>
+        <div class="note" style="left: 70%; animation-delay: 6s;">♪</div>
+        <div class="note" style="left: 90%; animation-delay: 8s;">♫</div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                Niegedacht
+                <span>Sociedade de Cantores</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#sponsors">Patrocinadores</a></li>
+                    <li><a href="#financial">Transparência</a></li>
+                    <li><a href="#events">Eventos</a></li>
+                    <li><a href="#gallery">Galeria</a></li>
+                    <li><a href="#music">Música</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Sociedade de Cantores Niegedacht</h1>
+            <p>Preservando a tradição musical alemã através das gerações. Mais de 50 anos de história e harmonia.</p>
+            <div class="hero-buttons">
+                <a href="#about" class="btn btn-primary">Conheça nossa história</a>
+                <a href="#contact" class="btn btn-outline">Participe</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Sobre Nós</h2>
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <h3>Nossa História</h3>
+                    <p>A Sociedade de Cantores Niegedacht foi fundada em 1970 por imigrantes alemães que trouxeram consigo a rica tradição coral de sua terra natal. O nome "Niegedacht" significa "Nunca Esquecido" em alemão, representando nosso compromisso em preservar e celebrar nossa herança cultural através da música.</p>
+                    <p>Ao longo de mais de cinco décadas, nos apresentamos em inúmeros eventos, festivais e celebrações, sempre levando a alegria da música alemã tradicional e contemporânea para públicos de todas as idades.</p>
+                    <p>Hoje, contamos com membros de diferentes gerações, unidos pela paixão pela música e pelo desejo de manter viva essa bela tradição.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Anos de História</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">40+</div>
+                        <div class="stat-label">Coralistas</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">200+</div>
+                        <div class="stat-label">Apresentações</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">Gerações</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sponsors Carousel Section -->
+    <section id="sponsors" class="sponsors">
+        <div class="sponsors-container">
+            <div class="sponsors-header">
+                <h2>Empresas Patrocinadoras</h2>
+                <p>Empresas que apoiam a cultura e a tradição alemã</p>
+            </div>
+
+            <!-- Flash Carousel -->
+            <div class="carousel-container">
+                <div class="carousel-track" id="carouselTrack">
+                    <!-- Sponsor items will be duplicated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Carousel Controls -->
+            <div class="carousel-controls">
+                <button class="carousel-btn" id="prevBtn" onclick="pauseCarousel()">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn" id="playPauseBtn" onclick="togglePlayPause()">
+                    <i class="fas fa-pause"></i>
+                </button>
+                <button class="carousel-btn" id="nextBtn" onclick="pauseCarousel()">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <!-- Speed Control -->
+            <div class="speed-control">
+                <label for="speedSelect">Velocidade do Carrossel:</label>
+                <select id="speedSelect" onchange="changeSpeed(this.value)">
+                    <option value="40">Normal</option>
+                    <option value="30">Rápido</option>
+                    <option value="50">Lento</option>
+                    <option value="20">Muito Rápido</option>
+                    <option value="60">Muito Lento</option>
+                </select>
+            </div>
+
+            <!-- Sponsor Counter -->
+            <div class="sponsor-counter">
+                <span id="sponsorCount">25</span> empresas patrocinadoras apoiando a cultura alemã
+            </div>
+        </div>
+    </section>
+
+    <!-- Financial Transparency Section -->
+    <section id="financial" class="financial">
+        <div class="financial-container">
+            <div class="financial-header">
+                <h2>Portal de Transparência Financeira</h2>
+                <p>Compromisso com a clareza e honestidade na gestão dos recursos da sociedade.</p>
+            </div>
+
+            <!-- Financial Stats Cards -->
+            <div class="financial-stats">
+                <div class="financial-card">
+                    <i class="fas fa-wallet"></i>
+                    <h3>Saldo Atual</h3>
+                    <div class="value" id="currentBalance">R$ 45.678,90</div>
+                    <div class="trend up">
+                        <i class="fas fa-arrow-up"></i> +12.5% este mês
+                    </div>
+                </div>
+                <div class="financial-card">
+                    <i class="fas fa-arrow-down"></i>
+                    <h3>Total de Despesas</h3>
+                    <div class="value" id="totalExpenses">R$ 12.345,67</div>
+                    <div class="trend down">
+                        <i class="fas fa-arrow-down"></i> -5.2% vs mês anterior
+                    </div>
+                </div>
+                <div class="financial-card">
+                    <i class="fas fa-arrow-up"></i>
+                    <h3>Total de Receitas</h3>
+                    <div class="value" id="totalRevenue">R$ 18.901,23</div>
+                    <div class="trend up">
+                        <i class="fas fa-arrow-up"></i> +8.3% vs mês anterior
+                    </div>
+                </div>
+                <div class="financial-card">
+                    <i class="fas fa-piggy-bank"></i>
+                    <h3>Reserva</h3>
+                    <div class="value" id="reserve">R$ 25.000,00</div>
+                    <div class="trend up">
+                        <i class="fas fa-lock"></i> Fundo de emergência
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Grid -->
+            <div class="dashboard-grid">
+                <!-- Receitas vs Despesas Chart -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-line"></i> Receitas vs Despesas</h3>
+                        <select id="periodSelect" onchange="updateChart(this.value)">
+                            <option value="6">Últimos 6 meses</option>
+                            <option value="12">Últimos 12 meses</option>
+                            <option value="24">Últimos 24 meses</option>
+                        </select>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart-bar" id="revenueChart"></div>
+                    </div>
+                </div>
+
+                <!-- Distribuição de Gastos -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-pie"></i> Distribuição de Gastos</h3>
+                        <span>2024</span>
+                    </div>
+                    <div class="pie-chart">
+                        <div class="pie" id="expensePie"></div>
+                        <div class="pie-legend">
+                            <div class="legend-item">
+                                <span class="legend-color eventos"></span>
+                                <span>Eventos (40%)</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color manutencao"></span>
+                                <span>Manutenção (25%)</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color equipamentos"></span>
+                                <span>Equipamentos (20%)</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color administrativo"></span>
+                                <span>Administrativo (15%)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Transactions Table -->
+                <div class="transactions-table">
+                    <div class="table-header">
+                        <h3><i class="fas fa-list"></i> Últimas Transações</h3>
+                        <input type="text" id="searchTransaction" placeholder="Buscar transação..." onkeyup="searchTransactions()">
+                    </div>
+                    <table id="transactionsTable">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Descrição</th>
+                                <th>Categoria</th>
+                                <th>Valor</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transactionsBody">
+                            <!-- Populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Footer with download options -->
+            <div class="financial-footer">
+                <div class="audit-info">
+                    <i class="fas fa-check-circle"></i>
+                    <p>Última auditoria: <strong>15/05/2024</strong> - Próxima: <strong>15/08/2024</strong></p>
+                </div>
+                <div class="download-options">
+                    <button class="download-btn" onclick="downloadReport('pdf')">
+                        <i class="fas fa-file-pdf"></i> Relatório PDF
+                    </button>
+                    <button class="download-btn" onclick="downloadReport('excel')">
+                        <i class="fas fa-file-excel"></i> Relatório Excel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="events">
+        <div class="container">
+            <h2 class="section-title">Próximos Eventos</h2>
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-date">
+                        <span class="day">15</span>
+                        <span class="month">Jun</span>
+                    </div>
+                    <div class="event-content">
+                        <h3>Festival de Música Alemã</h3>
+                        <div class="location"><i class="fas fa-map-marker-alt"></i> Parque Municipal</div>
+                        <p>Participe do tradicional festival com apresentações de corais alemães da região.</p>
+                        <a href="#" class="event-link">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-date">
+                        <span class="day">22</span>
+                        <span class="month">Jun</span>
+                    </div>
+                    <div class="event-content">
+                        <h3>Apresentação Especial</h3>
+                        <div class="location"><i class="fas fa-map-marker-alt"></i> Igreja Luterana</div>
+                        <p>Apresentação de cânticos sacros e músicas tradicionais alemãs.</p>
+                        <a href="#" class="event-link">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-date">
+                        <span class="day">30</span>
+                        <span class="month">Jun</span>
+                    </div>
+                    <div class="event-content">
+                        <h3>Noite Cultural Alemã</h3>
+                        <div class="location"><i class="fas fa-map-marker-alt"></i> Centro Cultural</div>
+                        <p>Uma noite especial com música, dança e gastronomia típica alemã.</p>
+                        <a href="#" class="event-link">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2 class="section-title">Galeria</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/1687845/pexels-photo-1687845.jpeg" alt="Apresentação do coral">
+                    <div class="gallery-overlay">
+                        <h4>Apresentação 2023</h4>
+                        <p>Festival de Corais</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/164931/pexels-photo-164931.jpeg" alt="Coral em ensaio">
+                    <div class="gallery-overlay">
+                        <h4>Ensaio Geral</h4>
+                        <p>Preparação para evento especial</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/976866/pexels-photo-976866.jpeg" alt="Membros do coral">
+                    <div class="gallery-overlay">
+                        <h4>Confraternização</h4>
+                        <p>Celebração de 50 anos</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/372751/pexels-photo-372751.jpeg" alt="Apresentação ao ar livre">
+                    <div class="gallery-overlay">
+                        <h4>Concerto ao Ar Livre</h4>
+                        <p>Parque da Cidade</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/157534/pexels-photo-157534.jpeg" alt="Coral em igreja">
+                    <div class="gallery-overlay">
+                        <h4>Apresentação na Igreja</h4>
+                        <p>Cânticos sacros</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/1730794/pexels-photo-1730794.jpeg" alt="Festival cultural">
+                    <div class="gallery-overlay">
+                        <h4>Festival Cultural</h4>
+                        <p>Música e tradição</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Music Section -->
+    <section id="music" class="music">
+        <div class="container">
+            <div class="music-content">
+                <h2 class="section-title">Nossa Música</h2>
+                <p>Ouça um pouco do nosso repertório e sinta a emoção da música alemã tradicional.</p>
+                
+                <div class="music-player">
+                    <div class="audio-player">
+                        <div class="audio-info">
+                            <i class="fas fa-music"></i>
+                            <span>Die Gedanken sind frei</span>
+                        </div>
+                        <audio controls>
+                            <source src="#" type="audio/mpeg">
+                            Seu navegador não suporta o elemento de áudio.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="playlist">
+                    <div class="playlist-item">
+                        <i class="fas fa-play-circle"></i>
+                        <div class="playlist-info">
+                            <h4>Die Gedanken sind frei</h4>
+                            <p>Tradicional Alemão</p>
+                        </div>
+                        <span class="duration">3:45</span>
+                    </div>
+                    <div class="playlist-item">
+                        <i class="fas fa-play-circle"></i>
+                        <div class="playlist-info">
+                            <h4>Kein schöner Land</h4>
+                            <p>Folclore Alemão</p>
+                        </div>
+                        <span class="duration">4:20</span>
+                    </div>
+                    <div class="playlist-item">
+                        <i class="fas fa-play-circle"></i>
+                        <div class="playlist-info">
+                            <h4>Am Brunnen vor dem Tore</h4>
+                            <p>Franz Schubert</p>
+                        </div>
+                        <span class="duration">3:55</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Entre em Contato</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Endereço</h4>
+                            <p>Rua das Flores, 123 - Centro<br>Cidade - Estado, 12345-678</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Telefone</h4>
+                            <p>(11) 1234-5678<br>(11) 98765-4321</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>E-mail</h4>
+                            <p>contato@niegedacht.com.br<br>secretaria@niegedacht.com.br</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Horário de Ensaios</h4>
+                            <p>Terças e Quintas - 19:30 às 21:30<br>Sábados - 15:00 às 17:00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <form id="contactForm" onsubmit="return handleSubmit(event)">
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefone</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sociedade de Cantores Niegedacht</h3>
+                    <p>Preservando a tradição musical alemã através das gerações. Mais de 50 anos de história e harmonia.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Links Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> Sobre</a></li>
+                        <li><a href="#sponsors"><i class="fas fa-chevron-right"></i> Patrocinadores</a></li>
+                        <li><a href="#financial"><i class="fas fa-chevron-right"></i> Transparência</a></li>
+                        <li><a href="#events"><i class="fas fa-chevron-right"></i> Eventos</a></li>
+                        <li><a href="#gallery"><i class="fas fa-chevron-right"></i> Galeria</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Horário de Ensaios</h3>
+                    <ul class="footer-links">
+                        <li><i class="far fa-calendar"></i> Terças: 19:30 - 21:30</li>
+                        <li><i class="far fa-calendar"></i> Quintas: 19:30 - 21:30</li>
+                        <li><i class="far fa-calendar"></i> Sábados: 15:00 - 17:00</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Receba novidades e eventos</p>
+                    <form class="newsletter-form" onsubmit="return handleNewsletter(event)">
+                        <input type="email" placeholder="Seu e-mail" required>
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Sociedade de Cantores Niegedacht. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'linear-gradient(135deg, #003366 0%, #000000 100%)';
+                header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #003366 0%, #000000 100%)';
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
+            }
+        });
+
+        // Sponsor data
+        const sponsors = [
+            { name: 'Cervejaria Bavária', category: 'Bebidas', years: '10 anos', logo: '🍺', premium: true },
+            { name: 'Restaurante Zum Bier', category: 'Gastronomia', years: '8 anos', logo: '🍖', premium: true },
+            { name: 'Hotel Alpino', category: 'Hotelaria', years: '15 anos', logo: '🏨', premium: true },
+            { name: 'Padaria Alemã', category: 'Alimentação', years: '12 anos', logo: '🥨' },
+            { name: 'Banco Germânico', category: 'Finanças', years: '20 anos', logo: '🏦', premium: true },
+            { name: 'Construtora Heidelberg', category: 'Construção', years: '5 anos', logo: '🏗️' },
+            { name: 'Farmácia Germânia', category: 'Saúde', years: '7 anos', logo: '💊' },
+            { name: 'Auto Mecânica München', category: 'Automotivo', years: '9 anos', logo: '🚗' },
+            { name: 'Escola de Alemão', category: 'Educação', years: '6 anos', logo: '📚' },
+            { name: 'Loja de Música', category: 'Instrumentos', years: '4 anos', logo: '🎵' },
+            { name: 'Transportes Berlin', category: 'Logística', years: '11 anos', logo: '🚚', premium: true },
+            { name: 'Imobiliária Frankfurt', category: 'Imobiliário', years: '8 anos', logo: '🏢' },
+            { name: 'Seguros Hansa', category: 'Seguros', years: '14 anos', logo: '🛡️', premium: true },
+            { name: 'Moda Tirol', category: 'Vestuário', years: '3 anos', logo: '👔' },
+            { name: 'Artesanato da Baviera', category: 'Artesanato', years: '7 anos', logo: '🎨' }
+        ];
+
+        // Carousel functionality
+        let isPlaying = true;
+        let currentSpeed = 40; // seconds for one full rotation
+        let animationName = 'scroll';
+        let carouselTrack = document.getElementById('carouselTrack');
+
+        // Initialize carousel with sponsor items
+        function initCarousel() {
+            // Clear existing content
+            carouselTrack.innerHTML = '';
+            
+            // Add sponsors twice for seamless loop
+            for (let i = 0; i < 2; i++) {
+                sponsors.forEach(sponsor => {
+                    const item = document.createElement('div');
+                    item.className = 'sponsor-item';
+                    
+                    const logo = document.createElement('div');
+                    logo.className = 'sponsor-logo';
+                    logo.textContent = sponsor.logo;
+                    
+                    const name = document.createElement('div');
+                    name.className = 'sponsor-name';
+                    name.textContent = sponsor.name;
+                    
+                    const category = document.createElement('div');
+                    category.className = 'sponsor-category';
+                    category.textContent = sponsor.category;
+                    
+                    const years = document.createElement('div');
+                    years.className = 'sponsor-years';
+                    years.textContent = sponsor.years;
+                    
+                    item.appendChild(logo);
+                    item.appendChild(name);
+                    item.appendChild(category);
+                    item.appendChild(years);
+                    
+                    if (sponsor.premium) {
+                        const badge = document.createElement('div');
+                        badge.className = 'sponsor-badge premium';
+                        badge.textContent = 'Premium';
+                        item.appendChild(badge);
+                    }
+                    
+                    carouselTrack.appendChild(item);
+                });
+            }
+            
+            // Update sponsor count
+            document.getElementById('sponsorCount').textContent = sponsors.length;
+            
+            // Set animation
+            updateCarouselSpeed();
+        }
+
+        // Update carousel speed
+        function updateCarouselSpeed() {
+            carouselTrack.style.animation = `scroll ${currentSpeed}s linear infinite`;
+            if (!isPlaying) {
+                carouselTrack.style.animationPlayState = 'paused';
+            }
+        }
+
+        // Change speed
+        function changeSpeed(speed) {
+            currentSpeed = parseInt(speed);
+            updateCarouselSpeed();
+        }
+
+        // Toggle play/pause
+        function togglePlayPause() {
+            isPlaying = !isPlaying;
+            const playPauseBtn = document.getElementById('playPauseBtn');
+            if (isPlaying) {
+                carouselTrack.style.animationPlayState = 'running';
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            } else {
+                carouselTrack.style.animationPlayState = 'paused';
+                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+            }
+        }
+
+        // Pause carousel (for manual navigation)
+        function pauseCarousel() {
+            if (isPlaying) {
+                togglePlayPause();
+            }
+        }
+
+        // Manual navigation
+        document.getElementById('prevBtn').addEventListener('click', function() {
+            const track = document.getElementById('carouselTrack');
+            const itemWidth = document.querySelector('.sponsor-item').offsetWidth + 60; // width + margin
+            track.style.transform = `translateX(${itemWidth}px)`;
+            setTimeout(() => {
+                track.style.transition = 'none';
+                track.style.transform = 'translateX(0)';
+                track.appendChild(track.firstElementChild);
+                setTimeout(() => {
+                    track.style.transition = 'transform 0.5s ease';
+                }, 10);
+            }, 500);
+        });
+
+        document.getElementById('nextBtn').addEventListener('click', function() {
+            const track = document.getElementById('carouselTrack');
+            const itemWidth = document.querySelector('.sponsor-item').offsetWidth + 60; // width + margin
+            track.style.transform = `translateX(-${itemWidth}px)`;
+            setTimeout(() => {
+                track.style.transition = 'none';
+                track.style.transform = 'translateX(0)';
+                track.appendChild(track.firstElementChild);
+                setTimeout(() => {
+                    track.style.transition = 'transform 0.5s ease';
+                }, 10);
+            }, 500);
+        });
+
+        // Financial Data
+        const transactions = [
+            { date: '15/05/2024', description: 'Apresentação Festival de Corais', category: 'Receita', amount: 5000.00, status: 'pago', type: 'positive' },
+            { date: '14/05/2024', description: 'Manutenção de Equipamentos', category: 'Despesa', amount: -850.00, status: 'pago', type: 'negative' },
+            { date: '13/05/2024', description: 'Doação de Patrocinador', category: 'Receita', amount: 3000.00, status: 'pago', type: 'positive' },
+            { date: '12/05/2024', description: 'Compra de Partituras', category: 'Despesa', amount: -320.00, status: 'pago', type: 'negative' },
+            { date: '11/05/2024', description: 'Mensalidade de Associados', category: 'Receita', amount: 2800.00, status: 'processando', type: 'positive' },
+            { date: '10/05/2024', description: 'Aluguel da Sala de Ensaios', category: 'Despesa', amount: -1500.00, status: 'pago', type: 'negative' },
+            { date: '09/05/2024', description: 'Venda de Produtos', category: 'Receita', amount: 1250.00, status: 'pago', type: 'positive' },
+            { date: '08/05/2024', description: 'Material de Divulgação', category: 'Despesa', amount: -450.00, status: 'pendente', type: 'negative' },
+            { date: '07/05/2024', description: 'Workshop de Canto', category: 'Receita', amount: 1800.00, status: 'pago', type: 'positive' },
+            { date: '06/05/2024', description: 'Uniforme Novo', category: 'Despesa', amount: -2200.00, status: 'processando', type: 'negative' }
+        ];
+
+        // Monthly data for charts
+        const monthlyData = {
+            months: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+            revenue: [8500, 9200, 10100, 8900, 11200, 12400, 0, 0, 0, 0, 0, 0],
+            expenses: [6200, 7100, 6800, 7300, 8100, 8900, 0, 0, 0, 0, 0, 0]
+        };
+
+        // Initialize charts
+        function initializeCharts() {
+            updateRevenueChart(6);
+            updatePieChart();
+            updateTransactionsTable();
+        }
+
+        // Update revenue chart
+        function updateRevenueChart(months) {
+            const chartBar = document.getElementById('revenueChart');
+            chartBar.innerHTML = '';
+            
+            const displayMonths = monthlyData.months.slice(0, months);
+            const revenueData = monthlyData.revenue.slice(0, months);
+            const expensesData = monthlyData.expenses.slice(0, months);
+            
+            const maxValue = Math.max(...revenueData, ...expensesData);
+            
+            displayMonths.forEach((month, index) => {
+                const barItem = document.createElement('div');
+                barItem.className = 'bar-item';
+                
+                const revenueBar = document.createElement('div');
+                revenueBar.className = 'bar';
+                revenueBar.style.height = (revenueData[index] / maxValue * 150) + 'px';
+                revenueBar.style.background = 'linear-gradient(180deg, #005CAB 0%, #003366 100%)';
+                revenueBar.setAttribute('data-value', `R$ ${revenueData[index].toLocaleString('pt-BR')}`);
+                revenueBar.title = `Receita: R$ ${revenueData[index].toLocaleString('pt-BR')}`;
+                
+                const expensesBar = document.createElement('div');
+                expensesBar.className = 'bar';
+                expensesBar.style.height = (expensesData[index] / maxValue * 150) + 'px';
+                expensesBar.style.background = 'linear-gradient(180deg, #DD0000 0%, #8B0000 100%)';
+                expensesBar.setAttribute('data-value', `R$ ${expensesData[index].toLocaleString('pt-BR')}`);
+                expensesBar.title = `Despesa: R$ ${expensesData[index].toLocaleString('pt-BR')}`;
+                
+                const label = document.createElement('span');
+                label.className = 'bar-label';
+                label.textContent = month;
+                
+                barItem.appendChild(revenueBar);
+                barItem.appendChild(expensesBar);
+                barItem.appendChild(label);
+                
+                chartBar.appendChild(barItem);
+            });
+        }
+
+        // Update pie chart
+        function updatePieChart() {
+            const pie = document.getElementById('expensePie');
+            // The pie is styled with conic-gradient in CSS
+        }
+
+        // Update transactions table
+        function updateTransactionsTable(filter = '') {
+            const tbody = document.getElementById('transactionsBody');
+            tbody.innerHTML = '';
+            
+            const filteredTransactions = transactions.filter(t => 
+                t.description.toLowerCase().includes(filter.toLowerCase()) ||
+                t.category.toLowerCase().includes(filter.toLowerCase())
+            );
+            
+            filteredTransactions.forEach(trans => {
+                const row = document.createElement('tr');
+                
+                const dateCell = document.createElement('td');
+                dateCell.textContent = trans.date;
+                
+                const descCell = document.createElement('td');
+                descCell.textContent = trans.description;
+                
+                const catCell = document.createElement('td');
+                catCell.textContent = trans.category;
+                
+                const amountCell = document.createElement('td');
+                amountCell.className = `amount ${trans.type}`;
+                amountCell.textContent = `R$ ${Math.abs(trans.amount).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                
+                const statusCell = document.createElement('td');
+                const statusBadge = document.createElement('span');
+                statusBadge.className = `status-badge ${trans.status}`;
+                statusBadge.textContent = trans.status.charAt(0).toUpperCase() + trans.status.slice(1);
+                statusCell.appendChild(statusBadge);
+                
+                row.appendChild(dateCell);
+                row.appendChild(descCell);
+                row.appendChild(catCell);
+                row.appendChild(amountCell);
+                row.appendChild(statusCell);
+                
+                tbody.appendChild(row);
+            });
+        }
+
+        // Chart update function
+        function updateChart(months) {
+            updateRevenueChart(parseInt(months));
+        }
+
+        // Search transactions
+        function searchTransactions() {
+            const searchTerm = document.getElementById('searchTransaction').value;
+            updateTransactionsTable(searchTerm);
+        }
+
+        // Download report
+        function downloadReport(format) {
+            let message = '';
+            if (format === 'pdf') {
+                message = 'Relatório PDF gerado com sucesso! (Simulação)';
+            } else if (format === 'excel') {
+                message = 'Relatório Excel gerado com sucesso! (Simulação)';
+            }
+            alert(message);
+        }
+
+        // Form submission handlers
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Mensagem enviada com sucesso! Em breve entraremos em contato.');
+            document.getElementById('contactForm').reset();
+            return false;
+        }
+
+        function handleNewsletter(event) {
+            event.preventDefault();
+            alert('Inscrição realizada com sucesso! Obrigado por se inscrever.');
+            event.target.reset();
+            return false;
+        }
+
+        // Intersection Observer para animações de scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observar elementos para animação
+        document.querySelectorAll('.about-text, .stat-item, .event-card, .gallery-item, .contact-item, .playlist-item, .financial-card, .dashboard-card, .sponsor-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Playlist functionality (simulated)
+        document.querySelectorAll('.playlist-item').forEach((item, index) => {
+            item.addEventListener('click', function() {
+                const audioPlayer = document.querySelector('audio');
+                const audioInfo = document.querySelector('.audio-info span');
+                
+                const songs = [
+                    'Die Gedanken sind frei',
+                    'Kein schöner Land',
+                    'Am Brunnen vor dem Tore'
+                ];
+                
+                audioInfo.textContent = songs[index];
+                
+                if (audioPlayer) {
+                    audioPlayer.play().catch(e => console.log('Audio play prevented:', e));
+                }
+                
+                this.style.background = 'rgba(255,206,0,0.3)';
+                setTimeout(() => {
+                    this.style.background = 'rgba(255,255,255,0.1)';
+                }, 200);
+            });
+        });
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeCharts();
+            initCarousel();
+        });
+    </script>
+</body>
+</html>
